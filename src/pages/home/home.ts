@@ -42,6 +42,9 @@ export class HomePage {
     if(!(this.posts.length > 0)){
       let loading = this.loadingCtrl.create();
       loading.present();
+      // this.wordpressService.getPage().subscribe(pagedata => {
+      //   console.log(pagedata);
+      // });
 
       this.wordpressService.getRecentPosts(this.categoryId)
       .subscribe(data => {
@@ -51,10 +54,12 @@ export class HomePage {
         }
         loading.dismiss();
       });
+
     }
   }
 
   postTapped(event, post) {
+    console.log(post);
 		this.navCtrl.push(PostPage, {
 		  item: post
 		});
@@ -72,6 +77,7 @@ export class HomePage {
         }
         post.excerpt.rendered = post.excerpt.rendered.split('<a')[0] + "</p>";
         this.posts.push(post);
+        console.log(post);
         loading = false;
       }
     }, err => {

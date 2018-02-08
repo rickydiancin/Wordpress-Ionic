@@ -1,8 +1,12 @@
 <ion-content padding class="form-content">
+
+   <div class="main-content">
+      <div class="container-logo" padding="" text-center="">
+        <img src="assets/imgs/bgcci-logo.gif" width="150">
+      </div>
+    </div>
   <form class="form" [formGroup]="login_form" (ngSubmit)="login(login_form.value)">
-    <ion-label class="title">Welcome back</ion-label>
-    <p class="skip-login"><a (click)="skipLogin()">Click here to skip login!</a></p>
-    <p class="skip-login"><a (click)="goToRegister()">Click here to Register!</a></p>
+    <ion-label class="title">Welcome <br>Bacolod Golfers!</ion-label>
     <ion-item>
       <ion-label color="primary">Username</ion-label>
       <ion-input type="text" formControlName="username" class="form-controll" required></ion-input>
@@ -15,4 +19,6 @@
     <p class="error-message" *ngIf="error_message">{{error_message}}</p>
     <button ion-button full class="login-button" [disabled]="!login_form.valid" type="submit">Login</button>
   </form>
+  <p class="skip-login"><a (click)="goToRegister()">Register</a> | <a (click)="skipLogin()">Skip</a></p>
+
 </ion-content>
